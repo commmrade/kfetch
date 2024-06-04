@@ -1,25 +1,14 @@
 #include "GPU.hpp"
-#include <algorithm>
-#include <cstdio>
 #include <format>
 #include<iostream>
-#include<fstream>
-#include <ostream>
 #include<string>
-#include<cstdlib>
-#include<cstdio>
-#include<sstream>
 #include<print>
-#include<stdexcept>
-#include<chrono>
 #include<Packager.hpp>
 #include <colors.hpp>
 #include<logos.hpp>
 #include<CPU.hpp>
 #include<Kernel.hpp>
 #include<Desktop.hpp>
-#include <utility>
-
 struct System
 {
     std::string distro_name;
