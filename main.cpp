@@ -18,6 +18,7 @@ struct System
     std::string DE_name;
     std::string cpu_name;
     std::string gpu_name;
+    std::string shell_version;
 
     int packages;
 
@@ -68,7 +69,8 @@ int main(int, char**){
     //Swap usage
     system.swap = swapUsage();
 
-
+    //shell
+    system.shell_version = shellVersion();
 
     //PRINTIING DATA
 
@@ -91,11 +93,12 @@ int main(int, char**){
     std::println("{}Uptime{}: {} / {}", BLUE, RESET, system.uptime.first, system.uptime.second);
     std::println("{}Packages{}: {}", BLUE, RESET, system.packages);
     std::println("{}DE{}: {}", BLUE, RESET, system.DE_name);
+    std::println("{}Shell{}: {}", BLUE, RESET, system.shell_version);
     std::println("{}CPU{}: {}", BLUE, RESET, system.cpu_name);
     std::println("{}GPU{}: {}", BLUE, RESET, system.gpu_name);
     std::println("{}RAM usage{}: {} / {} Gb", BLUE, RESET, system.ram.usedRam, system.ram.totalRam);
     std::println("{}Swap usage{}: {} / {} Gb", BLUE, RESET, system.swap.usedRam, system.swap.totalRam);
     
-
+    //std::cout << shellVersion() << std::endl;
     
 }

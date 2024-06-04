@@ -8,3 +8,5 @@
 std::string displayRes();
 
 std::string desktopEnv();
+
+std::string shellVersion();
