@@ -91,6 +91,24 @@ std::string shellVersion()
         }
        
     }
+    else if(shell_env == "/usr/bin/fish")
+    {
+        FILE *shell = popen("fish --version", "r");
+        std::string buf;
+        char ch;
+        
+        while((ch = fgetc(shell)) != EOF)
+        {
+            buf += ch;
+        }
+        pclose(shell);
+
+        if(!buf.empty())
+        {
+            return buf.substr(0, buf.size() - 1);
+        }
+       
+    }
 
     return "";
 }
