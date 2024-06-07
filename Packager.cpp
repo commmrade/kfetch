@@ -57,9 +57,5 @@ int packagesCount(std::string &distro)
             return atoi(buf.c_str());
         }
     }
-    else
-    {
-        return -1;
-    }
     return -1;
 }
