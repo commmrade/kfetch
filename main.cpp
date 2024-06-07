@@ -9,6 +9,10 @@
 #include<CPU.hpp>
 #include<Kernel.hpp>
 #include<Desktop.hpp>
+#include <cstdlib>
+#include <unistd.h>
+
+
 struct System
 {
     std::string distro_name;
@@ -33,8 +37,6 @@ int main(int, char**){
 
     System system;
 
-    std::ifstream file;
-    file.open("/etc/os-release");
 
     system.distro_name = disroName();
     system.kernel_version = kernelVersion();
@@ -47,7 +49,6 @@ int main(int, char**){
     system.packages = packagesCount(system.distro_name);
 
     //TODO: Arch based-distros
-    
 
 
     //Display resolution
@@ -90,7 +91,7 @@ int main(int, char**){
     std::cout << "" << std::endl;
     std::println("{}OS{}: {}", BLUE, RESET, system.distro_name);
     std::println("{}Kernel{}: {}", BLUE, RESET, system.kernel_version);
-    std::println("{}Uptime{}: {} / {}", BLUE, RESET, system.uptime.first, system.uptime.second);
+    std::println("{}Uptime{}: {} hours, {} minutes", BLUE, RESET, system.uptime.first, system.uptime.second);
     std::println("{}Packages{}: {}", BLUE, RESET, system.packages);
     std::println("{}DE{}: {}", BLUE, RESET, system.DE_name);
     std::println("{}Shell{}: {}", BLUE, RESET, system.shell_version);
@@ -100,5 +101,9 @@ int main(int, char**){
     std::println("{}Swap usage{}: {} / {} Gb", BLUE, RESET, system.swap.usedRam, system.swap.totalRam);
     
     //std::cout << shellVersion() << std::endl;
+  
     
+
+    return 0;
+
 }

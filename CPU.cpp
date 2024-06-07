@@ -5,7 +5,7 @@
 std::string cpuName()
 {
     std::ifstream file;
-    std::string result;
+    std::string result{};
 
     file.open("/proc/cpuinfo");
 

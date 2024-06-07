@@ -13,7 +13,13 @@ std::string GPUName()
         buf += sym;
     }
     pclose(gpu);
-    uint start = buf.find("Radeon");
-    uint end = buf.find("]", start + 1);
-    return buf.substr(start, end - start);
+
+    if(!buf.empty())
+    {
+        uint start = buf.find("Radeon");
+        uint end = buf.find("]", start + 1);
+        return buf.substr(start, end - start);
+    }
+    return "";
+    
 }

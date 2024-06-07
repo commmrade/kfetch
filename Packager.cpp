@@ -17,8 +17,11 @@ int packagesCount(std::string &distro)
             buf += ch;
         }
         pclose(pack);
-        return atoi(buf.c_str());
-        
+
+        if(!buf.empty())
+        {
+            return atoi(buf.c_str());
+        }
     }
     else if(distro.contains("Ubuntu") || distro.contains("Debian"))
     {
@@ -52,4 +55,5 @@ int packagesCount(std::string &distro)
     {
         return -1;
     }
+    return -1;
 }

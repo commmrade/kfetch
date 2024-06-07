@@ -5,7 +5,7 @@
 std::string disroName()
 {
     std::ifstream file;
-    std::string result;
+    std::string result{};
 
 
     file.open("/etc/os-release");
@@ -31,7 +31,7 @@ std::string disroName()
 std::string kernelVersion()
 {
     std::ifstream file;
-    std::string result;
+    std::string result{};
 
     
     file.open("/proc/version");
@@ -41,12 +41,16 @@ std::string kernelVersion()
         file >> s.rdbuf();
         std::string line = s.str();
         
-        uint start = 14;
-        uint end = line.find_first_of("(");
 
-        result = line.substr(start, end - start - 1);
-        file.close();
+        if(!line.empty())
+        {
+            uint start = 14;
+            uint end = line.find_first_of("(");
+
+            result = line.substr(start, end - start - 1);
+        }
     }
+    file.close();
     return result;
 }
 
@@ -77,7 +81,7 @@ std::pair<int, int> systemUptime()
 Ram ramUsage()
 {
     std::ifstream file;
-    Ram result;
+    Ram result{};
 
 
     file.open("/proc/meminfo");

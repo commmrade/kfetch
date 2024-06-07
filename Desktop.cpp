@@ -16,11 +16,15 @@ std::string displayRes()
     }
     pclose(res);
     
-    uint start = display_info.find("current") + 8;
-    uint end = display_info.find("maximum");
-
-    //std::cout << display_info.substr(start, end - start - 2) << std::endl;
-    return display_info.substr(start, end - start - 2); 
+    if(!display_info.empty())
+    {
+        uint start = display_info.find("current") + 8;
+        uint end = display_info.find("maximum");
+        //std::cout << display_info.substr(start, end - start - 2) << std::endl;
+        return display_info.substr(start, end - start - 2); 
+    }
+    return "";
+    
 }
 
 std::string desktopEnv()
@@ -36,8 +40,13 @@ std::string desktopEnv()
         buf += ch;
     }
     pclose(de);
-    buf.erase(buf.end() - 1, buf.end());
-    return buf;
+
+    if(!buf.empty())
+    {
+        buf.erase(buf.end() - 1, buf.end());
+        return buf; 
+    }
+    return "";
 }
 std::string shellVersion()
 {
@@ -55,10 +64,13 @@ std::string shellVersion()
         }
         pclose(shell);
 
-        uint start = buf.find("version") + 8;
-        uint end = buf.find("(");
-
-        return "bash " + buf.substr(start, end - start);
+        if(!buf.empty())
+        {
+            uint start = buf.find("version") + 8;
+            uint end = buf.find("(");
+            return "bash " + buf.substr(start, end - start);
+        }
+        
     }
     else if(shell_env == "/usr/bin/zsh")
     {
@@ -72,8 +84,12 @@ std::string shellVersion()
         }
         pclose(shell);
 
-        uint end = buf.find("(");
-        return buf.substr(0, end - 1);
+        if(!buf.empty())
+        {
+            uint end = buf.find("(");
+            return buf.substr(0, end - 1);
+        }
+       
     }
 
     return "";
