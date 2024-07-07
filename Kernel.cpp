@@ -5,7 +5,7 @@
 std::string disroName()
 {
     std::ifstream file;
-    std::string result{};
+    std::string result{"Not defined"};
 
 
     file.open("/etc/os-release");

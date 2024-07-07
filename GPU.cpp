@@ -20,6 +20,6 @@ std::string GPUName()
         uint end = buf.find("]", start + 1);
         return buf.substr(start, end - start);
     }
-    return "";
+    return "Not defined";
     
 }

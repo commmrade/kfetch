@@ -7,7 +7,7 @@ std::string displayRes()
 {
     FILE *res = popen("xrandr", "r");
 
-    std::string display_info ;
+    std::string display_info;
     char ch;
     
     while((ch = fgetc(res)) != EOF)
@@ -23,7 +23,7 @@ std::string displayRes()
         //std::cout << display_info.substr(start, end - start - 2) << std::endl;
         return display_info.substr(start, end - start - 2); 
     }
-    return "";
+    return "Not defined";
     
 }
 
@@ -46,7 +46,7 @@ std::string desktopEnv()
         buf.erase(buf.end() - 1, buf.end());
         return buf; 
     }
-    return "";
+    return "Not defined";
 }
 std::string shellVersion()
 {
@@ -110,5 +110,5 @@ std::string shellVersion()
        
     }
 
-    return "";
+    return "Not defined";
 }
