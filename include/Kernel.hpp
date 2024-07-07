@@ -12,7 +12,7 @@ struct Ram
 };
 
 
-std::string disroName();
+std::string distroName();
 std::string kernelVersion();
 std::pair<int, int> systemUptime();
 

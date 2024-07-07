@@ -2,7 +2,7 @@
 #include <fstream>
 
 
-std::string disroName()
+std::string distroName()
 {
     std::ifstream file;
     std::string result{"Not defined"};

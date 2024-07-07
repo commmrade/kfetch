@@ -38,7 +38,7 @@ int main(int, char**){
     System system;
 
 
-    system.distro_name = disroName();
+    system.distro_name = distroName();
     system.kernel_version = kernelVersion();
 
     system.uptime = systemUptime();
